@@ -1,9 +1,3 @@
-import toyota from "/toyota.png";
-import ford from "/ford.jpg";
-import bmw from "/bmw.jpg";
-import marcedes from "/mercedes-benz.png";
-import tesla from "/Tesla_logo.png";
-import honda from "/Honda.png";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 

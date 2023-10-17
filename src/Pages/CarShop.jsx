@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CarShop = () => {
   const params = useParams();
@@ -14,7 +14,6 @@ const CarShop = () => {
         setLoading(false);
       });
   }, [brand_name]);
-  console.log(cars);
 
   return (
     <div className="max-w-7xl mx-auto my-10">
@@ -48,12 +47,14 @@ const CarShop = () => {
                   </h2>
                   <h3>Type: {car?.type}</h3>
                   <h3>Price: {car?.price} $</h3>
-                  <h3>Rating: {car?.rating} $</h3>
+                  <h3>Rating: {car?.rating} </h3>
 
                   <div className="card-actions">
-                    <button className="btn text-white bg-primary-default hover:bg-white hover:text-primary-default border-primary-default">
-                      Details
-                    </button>
+                    <Link to={`/cars/${car._id}`}>
+                      <button className="btn text-white bg-primary-default hover:bg-white hover:text-primary-default border-primary-default">
+                        Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -64,7 +65,7 @@ const CarShop = () => {
         <div className="h-screen flex items-center text-4xl lg:text-6xl text-center font-bold">
           {" "}
           <h3 className="lg:w-1/2 mx-auto">
-            Sorry No {brand_name} Car Availble at the moment
+            Sorry No {brand_name} Car Available at the moment
           </h3>
         </div>
       )}
