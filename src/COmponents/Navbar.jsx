@@ -95,10 +95,6 @@ const Navbar = () => {
   return (
     <div className="bg-primary-default">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* <div className="flex items-center">
-          <img className="w-16" src={logo} alt="" />
-          <h3 className="text-white font-bold text-lg">DRIVY</h3>
-        </div> */}
         <div>
           <ul className="flex text-white gap-4 "></ul>
         </div>
@@ -123,7 +119,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="bg-primary-default menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52"
+                className="bg-primary-default menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-none w-52"
               >
                 {navLinkDropDown}
               </ul>

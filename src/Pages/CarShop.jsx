@@ -51,7 +51,7 @@ const CarShop = () => {
 
                   <div className="card-actions">
                     <Link to={`/cars/${car._id}`}>
-                      <button className="btn text-white bg-primary-default hover:bg-white hover:text-primary-default border-primary-default">
+                      <button className="btn rounded-none text-white bg-primary-default hover:bg-white hover:text-primary-default border-primary-default">
                         Details
                       </button>
                     </Link>

@@ -40,7 +40,7 @@ const CarDetails = () => {
               <h3> {car?.short_description} </h3>
             </div>
             <Link to={`/cars/${car._id}`}>
-              <button className="mt-6 btn text-white bg-primary-default hover:bg-white hover:text-primary-default border-primary-default">
+              <button className="mt-6 btn rounded-none text-white bg-primary-default hover:bg-white hover:text-primary-default border-primary-default">
                 Add to Cart
               </button>
             </Link>
