@@ -56,7 +56,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? " bg-primary  border-b-2 border-white"
+              ? " bg-primary py-2 border-b-2 border-white"
               : ""
           }
         >
@@ -70,7 +70,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? " bg-primary  border-b-2 border-white"
+              ? " bg-primary py-2 border-b-2 border-white"
               : ""
           }
         >
@@ -84,7 +84,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? " bg-primary  border-b-2 border-white"
+              ? " bg-primary py-2 border-b-2 border-white"
               : ""
           }
         >
@@ -141,7 +141,7 @@ const Navbar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? " bg-primary  border-b-2 border-white"
+                  ? " bg-primary py-2 border-b-2 border-white"
                   : ""
               }
             >

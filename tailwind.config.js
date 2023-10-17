@@ -8,6 +8,10 @@ export default {
           default: "#20262f",
         },
       },
+      backgroundImage: {
+        banner1:
+          "url('https://cdn.discordapp.com/attachments/796439138403352596/1163852545815478414/bg-banner-1.jpg')",
+      },
     },
   },
   plugins: [require("daisyui")],
