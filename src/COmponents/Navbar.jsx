@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import logo from "/carlogo2.png";
 const Navbar = () => {
   const navLinkDropDown = (
     <>
