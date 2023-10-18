@@ -20,13 +20,16 @@ const AddProduct = () => {
       rating,
       short_description,
     };
-    fetch("http://localhost:4000/cars", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newCar),
-    })
+    fetch(
+      "https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/cars",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCar),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

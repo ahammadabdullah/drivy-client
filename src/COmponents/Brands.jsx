@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 const Brands = () => {
   const [brands, setBrands] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/brands")
+    fetch(
+      "https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/brands"
+    )
       .then((res) => res.json())
       .then((data) => setBrands(data));
   }, []);

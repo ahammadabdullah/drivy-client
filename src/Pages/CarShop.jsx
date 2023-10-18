@@ -9,7 +9,9 @@ const CarShop = () => {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:4000/cars/${brand_name}`)
+    fetch(
+      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/cars/${brand_name}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCars(data);
