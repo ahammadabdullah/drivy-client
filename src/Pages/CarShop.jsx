@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Slider from "../COmponents/Slider";
 
 const CarShop = () => {
   const params = useParams();
@@ -16,9 +17,10 @@ const CarShop = () => {
   }, [brand_name]);
 
   return (
-    <div className="max-w-7xl mx-auto my-10">
+    <div className="max-w-7xl mx-auto ">
+      <Slider></Slider>
       {loading ? (
-        <div className="h-screen  flex items-center">
+        <div className="h-screen my-10 flex items-center">
           {" "}
           <span className="mx-auto loading loading-bars loading-lg"></span>
         </div>
