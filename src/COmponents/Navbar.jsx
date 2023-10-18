@@ -142,6 +142,16 @@ const Navbar = () => {
             <ul className=" gap-4 menu-horizontal px-1">{navLink}</ul>
           </div>
           <div className="navbar-end">
+            {user?.photoURL && (
+              <img
+                className="rounded-full w-[30px]"
+                src={user?.photoURL}
+                alt="user avatar"
+              />
+            )}
+            {user?.displayName && (
+              <p className="py-1 px-2">{user?.displayName}</p>
+            )}
             {user ? (
               <button onClick={handleLogout}>Logout</button>
             ) : (

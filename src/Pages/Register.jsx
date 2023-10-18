@@ -80,7 +80,7 @@ const Register = () => {
                     required
                   />
                   <input
-                    className="w-full bg-primary text-white py-4  my-4"
+                    className="btn hover:text-primary rounded-none w-full bg-primary text-white py-4  my-4"
                     type="submit"
                     value="Register"
                   />

@@ -66,7 +66,7 @@ const Login = () => {
                 placeholder="Password"
               />
               <input
-                className="w-full bg-primary  py-4 text-white my-4"
+                className="btn hover:text-primary rounded-none w-full bg-primary  py-4 text-white my-4"
                 type="submit"
                 value="login"
               />
