@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loader from "../COmponents/Loader";
+import { toast } from "react-hot-toast";
+import useAuth from "../Hooks/useAuth";
 
 const CarDetails = () => {
   const { id } = useParams();
   const [car, setCar] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [newCartData, setNewCartData] = useState([]);
+  const { user } = useAuth();
+  //car data by id
   useEffect(() => {
     fetch(`http://localhost:4000/car/${id}`)
       .then((res) => res.json())
@@ -14,6 +19,41 @@ const CarDetails = () => {
         setLoading(false);
       });
   }, [id]);
+  // all cart data
+
+  const cartData = {
+    email: user?.email,
+    photo: car.ImageURL,
+    name: car.Name,
+    brand_name: car.brand_name,
+    price: car.price,
+  };
+  const handleAddToCart = () => {
+    //get filtered items with name
+    fetch(`http://localhost:4000/cart/${car.Name}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setNewCartData(data);
+      });
+    if (newCartData.length > 0) {
+      alert("already added to cart");
+      return;
+    }
+    fetch("http://localhost:4000/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Added car successfully");
+        }
+      });
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       {loading ? (
@@ -30,18 +70,20 @@ const CarDetails = () => {
                 Type: <span className="font-semibold">{car?.type}</span>
               </h3>
               <h3>
-                Price: <span className="font-semibold">{car?.price}?</span>
+                Price: <span className="font-semibold">{car?.price}$</span>
               </h3>
               <h3>
                 Price: <span className="font-semibold">{car?.rating}</span>
               </h3>
               <h3> {car?.short_description} </h3>
             </div>
-            <Link to={`/cars/${car._id}`}>
-              <button className="mt-6 btn rounded-none text-white bg-primary hover:bg-white hover:text-primary border-primary">
-                Add to Cart
-              </button>
-            </Link>
+
+            <button
+              onClick={() => handleAddToCart(car._id)}
+              className="handleAddToCart mt-6 btn rounded-none text-white bg-primary hover:bg-white hover:text-primary border-primary"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       )}
