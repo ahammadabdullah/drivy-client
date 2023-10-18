@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Loader from "../COmponents/Loader";
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -16,10 +17,7 @@ const CarDetails = () => {
   return (
     <div className="max-w-7xl mx-auto">
       {loading ? (
-        <div className="h-screen  flex items-center">
-          {" "}
-          <span className="mx-auto loading loading-bars loading-lg"></span>
-        </div>
+        <Loader />
       ) : (
         <div className="w-full my-10">
           <img src={car?.ImageURL} alt="cars" className="rounded-md" />
