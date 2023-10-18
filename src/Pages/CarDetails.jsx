@@ -36,7 +36,7 @@ const CarDetails = () => {
         setNewCartData(data);
       });
     if (newCartData.length > 0) {
-      alert("already added to cart");
+      toast.error("already added to cart");
       return;
     }
     fetch("http://localhost:4000/cart", {
@@ -73,7 +73,7 @@ const CarDetails = () => {
                 Price: <span className="font-semibold">{car?.price}$</span>
               </h3>
               <h3>
-                Price: <span className="font-semibold">{car?.rating}</span>
+                Rating: <span className="font-semibold">{car?.rating}</span>
               </h3>
               <h3> {car?.short_description} </h3>
             </div>

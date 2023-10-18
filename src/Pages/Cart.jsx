@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [totalPrice, setTotalPrice] = useState(0);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const Cart = () => {
   useEffect(() => {
     cart?.map((item) => {
       tPrice += item.price;
+      setTotalPrice(tPrice);
     });
   }, [cart]);
   const handleDeleteOne = (_id) => {
@@ -29,7 +31,11 @@ const Cart = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.deletedCount) {
+          const filteredCart = cart.filter((item) => item._id !== _id);
+          setCart(filteredCart);
+          toast.success("Product Removed successfully");
+        }
       });
   };
   const handleClearCart = () => {
@@ -40,6 +46,8 @@ const Cart = () => {
       .then((data) => {
         if (data.deletedCount > 0) {
           toast.success("Cart Cleared Successfully");
+          setCart([]);
+          setTotalPrice(0);
         }
       });
   };
@@ -87,7 +95,7 @@ const Cart = () => {
             <tr>
               <th></th>
               <td>Total</td>
-              <td>{tPrice} $</td>
+              <td>{totalPrice} $</td>
               <td></td>
             </tr>
           </tbody>

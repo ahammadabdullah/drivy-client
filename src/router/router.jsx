@@ -8,6 +8,7 @@ import CarShop from "../Pages/CarShop";
 import CarDetails from "../Pages/CarDetails";
 import Register from "../Pages/Register";
 import Update from "../Pages/Update";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/addproduct",
-        element: <AddProduct />,
+        element: (
+          <PrivateRoute>
+            <AddProduct />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -40,11 +49,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/cars/:id",
-        element: <CarDetails />,
+        element: (
+          <PrivateRoute>
+            <CarDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/cars/update/:id",
-        element: <Update />,
+        element: (
+          <PrivateRoute>
+            <Update />
+          </PrivateRoute>
+        ),
       },
     ],
   },
