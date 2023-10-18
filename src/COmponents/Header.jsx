@@ -11,7 +11,7 @@ const Header = () => {
               We offer competitive prices and a wide selection of cars to choose
               from.
             </h4>
-            <button className="lg:!mt-12 py-3 px-4 bg-primary-default">
+            <button className="lg:!mt-12 py-3 px-4 bg-primary">
               Book An Appointment Now{" "}
             </button>
           </div>

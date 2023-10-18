@@ -93,7 +93,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-primary-default">
+    <div className="bg-primary">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div>
           <ul className="flex text-white gap-4 "></ul>
@@ -119,7 +119,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="bg-primary-default menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-none w-52"
+                className="bg-primary menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-none w-52"
               >
                 {navLinkDropDown}
               </ul>

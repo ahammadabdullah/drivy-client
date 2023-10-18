@@ -68,7 +68,7 @@ const Login = () => {
                 placeholder="Password"
               />
               <input
-                className="w-full bg-primary rounded-md py-4 text-white my-4"
+                className="w-full bg-primary  py-4 text-white my-4"
                 type="submit"
                 value="login"
               />
@@ -90,7 +90,7 @@ const Login = () => {
             <div className="pb-8">
               <button
                 onClick={handleGoogleLogin}
-                className="w-full py-4 flex items-center justify-center gap-3 text-primary border-2 rounded-md border-primary "
+                className="w-full py-4 flex items-center justify-center gap-3 text-primary border-2  border-primary "
               >
                 {" "}
                 <IoLogoGoogle /> <span className="font-bold">Google</span>

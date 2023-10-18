@@ -86,7 +86,7 @@ const Register = () => {
                     required
                   />
                   <input
-                    className="w-full bg-primary rounded-md py-4 text-white my-4"
+                    className="w-full bg-primary text-white py-4  my-4"
                     type="submit"
                     value="Register"
                   />

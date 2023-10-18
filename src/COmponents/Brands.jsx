@@ -11,7 +11,7 @@ const Brands = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="text-center my-12 text-primary-default">
+      <div className="text-center my-12 text-primary">
         <h3 className="text-4xl lg:text-6xl font-semibold pb-4 lg:pt-10">
           Brands{" "}
         </h3>
@@ -21,7 +21,7 @@ const Brands = () => {
           <span className="font-bold px-2">-</span>
         </p>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6  text-primary-default font-bold text-2xl text-center">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6  text-primary font-bold text-2xl text-center">
         {brands?.map((brand) => (
           <Link key={brand._id} to={`/brands/${brand?.brand_name}`}>
             <div

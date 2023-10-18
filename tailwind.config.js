@@ -4,9 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          default: "#20262f",
-        },
+        primary: "#20262f",
       },
       backgroundImage: {
         banner1:
