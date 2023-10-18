@@ -1,4 +1,6 @@
+import Achievements from "../COmponents/Achievements";
 import Brands from "../COmponents/Brands";
+import EmailNotification from "../COmponents/EmailNotification";
 import Header from "../COmponents/Header";
 
 const Home = () => {
@@ -6,6 +8,8 @@ const Home = () => {
     <div>
       <Header />
       <Brands />
+      <Achievements />
+      <EmailNotification />
     </div>
   );
 };
