@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-hot-toast";
-import ToggleTheme from "./ToggleTheme";
 const Navbar = () => {
   const { user, logout } = useAuth();
   const handleLogout = () => {
@@ -143,7 +142,6 @@ const Navbar = () => {
             <ul className=" gap-4 menu-horizontal px-1">{navLink}</ul>
           </div>
           <div className="navbar-end">
-            <ToggleTheme />
             {user?.photoURL && (
               <img
                 className="rounded-full w-[30px]"

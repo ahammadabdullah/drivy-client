@@ -11,7 +11,7 @@ const Brands = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="text-center my-12 text-primary">
+      <div className="text-center my-12 text-primary dark:!text-gray-400">
         <h3 className="text-4xl lg:text-6xl font-semibold pb-4 lg:pt-10">
           Brands{" "}
         </h3>
@@ -25,7 +25,7 @@ const Brands = () => {
         {brands?.map((brand) => (
           <Link key={brand._id} to={`/brands/${brand?.brand_name}`}>
             <div
-              className="w-[250px] mx-auto mb-6 "
+              className="w-[250px] mx-auto mb-6 dark:bg-gray-300  p-4"
               title="click to see details"
             >
               <div className="h-[250px] flex items-center">
