@@ -2,6 +2,7 @@
 
 ## Features:
 
+- Theme Toggle: A theme toggler is added so that user change change the theme to his preffered theme.
 - Loader: This website has loader feature in every page.
 - Dynamic Title: This Website has dynamic title .
 - Responsive: This website is fully responsive for mobile, tablet and pc devices.
