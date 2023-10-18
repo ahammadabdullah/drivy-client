@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../COmponents/Navbar";
 import { Toaster } from "react-hot-toast";
 import ToggleTheme from "../COmponents/ToggleTheme";
+import Footer from "../COmponents/Footer";
 
 const Root = () => {
   return (
@@ -13,6 +14,7 @@ const Root = () => {
         {" "}
         <ToggleTheme />
       </div>
+      <Footer />
     </div>
   );
 };
