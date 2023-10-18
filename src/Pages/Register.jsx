@@ -4,8 +4,6 @@ import { toast } from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import auth from "../config/config.firebase";
 
-import { useEffect } from "react";
-
 const Register = () => {
   const { createAccWithEmailPass } = useAuth();
   const navigate = useNavigate();

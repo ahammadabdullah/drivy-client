@@ -7,6 +7,7 @@ import Login from "../Pages/Login";
 import CarShop from "../Pages/CarShop";
 import CarDetails from "../Pages/CarDetails";
 import Register from "../Pages/Register";
+import Update from "../Pages/Update";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/cars/:id",
         element: <CarDetails />,
+      },
+      {
+        path: "/cars/update/:id",
+        element: <Update />,
       },
     ],
   },

@@ -1,5 +1,17 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+import { toast } from "react-hot-toast";
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("Logged out successfully");
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
+  };
   const navLinkDropDown = (
     <>
       <li>
@@ -130,18 +142,22 @@ const Navbar = () => {
             <ul className=" gap-4 menu-horizontal px-1">{navLink}</ul>
           </div>
           <div className="navbar-end">
-            <NavLink
-              to="/login"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? " bg-primary py-2 border-b-2 border-white"
-                  : ""
-              }
-            >
-              login
-            </NavLink>
+            {user ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <NavLink
+                to="/login"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? " bg-primary py-2 border-b-2 border-white"
+                    : ""
+                }
+              >
+                login
+              </NavLink>
+            )}
           </div>
         </div>
       </div>

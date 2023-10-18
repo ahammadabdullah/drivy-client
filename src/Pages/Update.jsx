@@ -1,12 +1,23 @@
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const AddProduct = () => {
-  const handleAddProduct = (e) => {
+const Update = () => {
+  const { id } = useParams();
+  const [car, setCar] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetch(`http://localhost:4000/car/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCar(data);
+        setLoading(false);
+      });
+  }, [id]);
+  const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
     const Name = form.name.value;
-    const brand_name = form.brand_name.value;
     const ImageURL = form.photo.value;
     const type = form.type.value;
     const price = parseInt(form.price.value);
@@ -14,15 +25,14 @@ const AddProduct = () => {
     const short_description = form.short_description.value;
     const newCar = {
       ImageURL,
-      brand_name,
       Name,
       type,
       price,
       rating,
       short_description,
     };
-    fetch("http://localhost:4000/cars", {
-      method: "POST",
+    fetch(`http://localhost:4000/car/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -31,7 +41,8 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) toast.success("Product Added successfully");
+
+        if (data.modifiedCount > 0) toast.success("Updated Successfully");
       });
   };
   return (
@@ -42,34 +53,22 @@ const AddProduct = () => {
             <div className="md:w-2/4 w-[90%] bg-white text-center mx-auto ">
               <div className="w-3/4 mx-auto">
                 <h3 className="text-3xl font-bold pt-20 pb-10 text-primary">
-                  Add Product
+                  Update Product
                 </h3>
                 <hr />
-                <form onSubmit={handleAddProduct} className="pt-10">
+                <form onSubmit={handleUpdateProduct} className="pt-10">
                   <label className="block text-left">Name</label>
                   <input
+                    defaultValue={car.Name}
                     className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
                     type="text"
                     name="name"
                     placeholder="Name"
                   />
-                  <label htmlFor="brand_name" className="block text-left">
-                    Brand Name
-                  </label>
-                  <select
-                    title="Brand Name"
-                    name="brand_name"
-                    className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
-                  >
-                    <option value="Toyota">Toyota</option>
-                    <option value="Ford">Ford</option>
-                    <option value="BMW">BMW</option>
-                    <option value="Mercedes-Benz">Mercedes-Benz</option>
-                    <option value="Tesla">Tesla</option>
-                    <option value="Honda">Honda</option>
-                  </select>
+
                   <label className="block text-left">photo URL</label>
                   <input
+                    defaultValue={car.ImageURL}
                     className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
                     type="text"
                     name="photo"
@@ -77,6 +76,7 @@ const AddProduct = () => {
                   />
                   <label className="block text-left">Type</label>
                   <input
+                    defaultValue={car.type}
                     className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
                     type="text"
                     name="type"
@@ -84,6 +84,7 @@ const AddProduct = () => {
                   />
                   <label className="block text-left">Price</label>
                   <input
+                    defaultValue={car.price}
                     className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
                     type="number"
                     name="price"
@@ -91,6 +92,7 @@ const AddProduct = () => {
                   />
                   <label className="block text-left">Rating</label>
                   <input
+                    defaultValue={car.rating}
                     className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
                     type="number"
                     name="rating"
@@ -98,6 +100,7 @@ const AddProduct = () => {
                   />
                   <label className="block text-left">Short Description</label>
                   <input
+                    defaultValue={car.short_description}
                     className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
                     type="text"
                     name="short_description"
@@ -106,7 +109,7 @@ const AddProduct = () => {
                   <input
                     className="w-full mb-10 bg-primary text-white py-4  my-4"
                     type="submit"
-                    value="Add Product"
+                    value="Update Product"
                   />
                 </form>
               </div>
@@ -118,4 +121,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default Update;

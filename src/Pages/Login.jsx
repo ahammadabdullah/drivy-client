@@ -1,8 +1,6 @@
 import { IoLogoGoogle } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-
-import { useEffect } from "react";
 import useAuth from "../Hooks/useAuth";
 
 const Login = () => {

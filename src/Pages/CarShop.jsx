@@ -57,6 +57,11 @@ const CarShop = () => {
                         Details
                       </button>
                     </Link>
+                    <Link to={`/cars/update/${car._id}`}>
+                      <button className="btn rounded-none text-white bg-primary hover:bg-white hover:text-primary border-primary">
+                        Update
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
