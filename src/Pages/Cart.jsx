@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import Loader from "../COmponents/Loader";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -62,10 +63,11 @@ const Cart = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Drivy | Cart</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto py-20">
-        <h3 className="text-5xl font-bold text-primary text-center pb-10">
-          My Cart
-        </h3>
+        <h3 className="text-5xl font-bold  text-center pb-10">My Cart</h3>
 
         <table className="table md:text-xl font-medium">
           <thead className="w-full ">

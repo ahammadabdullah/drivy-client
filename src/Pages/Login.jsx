@@ -2,6 +2,7 @@ import { IoLogoGoogle } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { googleLogin, signInWithEmailPass } = useAuth();
@@ -32,6 +33,9 @@ const Login = () => {
   };
   return (
     <div className="bg-base-300 min-h-screen ">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto py-20">
         <div
           data-aos="fade-down"

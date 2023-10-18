@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Slider from "../COmponents/Slider";
 import Loader from "../COmponents/Loader";
+import { Helmet } from "react-helmet";
 
 const CarShop = () => {
   const params = useParams();
@@ -21,6 +22,9 @@ const CarShop = () => {
 
   return (
     <div className="max-w-7xl mx-auto ">
+      <Helmet>
+        <title>Drivy | {brand_name}</title>
+      </Helmet>
       <Slider></Slider>
       {loading ? (
         <Loader />

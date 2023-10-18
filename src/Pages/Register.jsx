@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import auth from "../config/config.firebase";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createAccWithEmailPass } = useAuth();
@@ -40,6 +41,9 @@ const Register = () => {
   return (
     <div>
       <div className="bg-base-300  ">
+        <Helmet>
+          <title>Register</title>
+        </Helmet>
         <div className="max-w-7xl mx-auto pt-20">
           <div className="pb-20">
             <div className="md:w-2/4 w-[90%] bg-white text-center mx-auto ">

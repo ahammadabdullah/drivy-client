@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import Loader from "../COmponents/Loader";
+import { Helmet } from "react-helmet";
 
 const Update = () => {
   const { id } = useParams();
@@ -57,6 +58,9 @@ const Update = () => {
         <Loader />
       ) : (
         <div className="bg-base-300  ">
+          <Helmet>
+            <title>Update | {car.Name}</title>
+          </Helmet>
           <div className="max-w-7xl mx-auto pt-20">
             <div className="pb-20">
               <div className="md:w-2/4 w-[90%] bg-white text-center mx-auto ">

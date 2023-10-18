@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../COmponents/Loader";
 import { toast } from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -67,6 +68,11 @@ const CarDetails = () => {
         <Loader />
       ) : (
         <div className="w-full my-10">
+          <Helmet>
+            <title>
+              {car.brand_name} {car.Name}
+            </title>
+          </Helmet>
           <img src={car?.ImageURL} alt="cars" className="rounded-md" />
           <div className="text-center">
             <h2 className="text-4xl lg:text-6xl  font-semibold  py-10">

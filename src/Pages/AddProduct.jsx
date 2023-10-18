@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { toast } from "react-hot-toast";
 
 const AddProduct = () => {
@@ -38,6 +39,9 @@ const AddProduct = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title> Add Product</title>
+      </Helmet>
       <div className="bg-base-300  ">
         <div className="max-w-7xl mx-auto pt-20">
           <div className="pb-20">
