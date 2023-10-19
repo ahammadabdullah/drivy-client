@@ -110,7 +110,7 @@ const AddProduct = () => {
                     placeholder="Short Description"
                   />
                   <input
-                    className="w-full mb-10 bg-primary text-white py-4  my-4"
+                    className="btn rounded-none w-full mb-10 bg-primary text-white py-4  my-4"
                     type="submit"
                     value="Add Product"
                   />

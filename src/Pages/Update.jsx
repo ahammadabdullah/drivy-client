@@ -23,6 +23,7 @@ const Update = () => {
     const form = e.target;
     const Name = form.name.value;
     const ImageURL = form.photo.value;
+    const brand_name = form.brand_name.value;
     const type = form.type.value;
     const price = parseInt(form.price.value);
     const rating = parseFloat(form.rating.value).toFixed(1);
@@ -30,6 +31,7 @@ const Update = () => {
     const newCar = {
       ImageURL,
       Name,
+      brand_name,
       type,
       price,
       rating,
@@ -78,7 +80,22 @@ const Update = () => {
                       name="name"
                       placeholder="Name"
                     />
-
+                    <label htmlFor="brand_name" className="block text-left">
+                      Brand Name
+                    </label>
+                    <select
+                      defaultValue={car.brand_name}
+                      title="Brand Name"
+                      name="brand_name"
+                      className="w-full bg-gray-100 py-5 pl-5 my-4 focus:outline-primary text-primary"
+                    >
+                      <option value="Toyota">Toyota</option>
+                      <option value="Ford">Ford</option>
+                      <option value="BMW">BMW</option>
+                      <option value="Mercedes-Benz">Mercedes-Benz</option>
+                      <option value="Tesla">Tesla</option>
+                      <option value="Honda">Honda</option>
+                    </select>
                     <label className="block text-left">photo URL</label>
                     <input
                       defaultValue={car.ImageURL}
@@ -120,7 +137,7 @@ const Update = () => {
                       placeholder="Short Description"
                     />
                     <input
-                      className="w-full mb-10 bg-primary text-white py-4  my-4"
+                      className="btn rounded-none w-full mb-10 bg-primary text-white py-4  my-4"
                       type="submit"
                       value="Update Product"
                     />
