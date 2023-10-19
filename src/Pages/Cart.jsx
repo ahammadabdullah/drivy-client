@@ -77,11 +77,12 @@ const Cart = () => {
               <th>Price</th>
             </tr>
           </thead>
-          <tbody>
-            {loading ? (
-              <Loader />
-            ) : (
-              cart?.map((item) => (
+
+          {loading ? (
+            <Loader />
+          ) : (
+            <tbody>
+              {cart?.map((item) => (
                 <tr key={item._id}>
                   <td>
                     <img className="w-3/4" src={item?.photo} alt="" />
@@ -101,15 +102,15 @@ const Cart = () => {
                     </button>
                   </td>
                 </tr>
-              ))
-            )}
-            <tr>
-              <th></th>
-              <td>Total</td>
-              <td>{totalPrice} $</td>
-              <td></td>
-            </tr>
-          </tbody>
+              ))}
+              <tr>
+                <th></th>
+                <td>Total</td>
+                <td>{totalPrice} $</td>
+                <td></td>
+              </tr>
+            </tbody>
+          )}
         </table>
         <div className="flex justify-evenly py-10">
           <button
