@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Loader from "./Loader";
 
 const Brands = () => {
   const [brands, setBrands] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch(
       "https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/brands"
     )
       .then((res) => res.json())
-      .then((data) => setBrands(data));
+      .then((data) => {
+        setBrands(data);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -23,21 +29,25 @@ const Brands = () => {
           <span className="font-bold px-2">-</span>
         </p>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6  text-primary font-bold text-2xl text-center">
-        {brands?.map((brand) => (
-          <Link key={brand._id} to={`/brands/${brand?.brand_name}`}>
-            <div
-              className="w-[250px] mx-auto mb-6 dark:bg-gray-300  p-4"
-              title="click to see details"
-            >
-              <div className="h-[250px] flex items-center">
-                <img className="w-full " src={brand?.brand_photo} alt="" />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6  text-primary font-bold text-2xl text-center">
+          {brands?.map((brand) => (
+            <Link key={brand._id} to={`/brands/${brand?.brand_name}`}>
+              <div
+                className="w-[250px] mx-auto mb-6 dark:bg-gray-300  p-4"
+                title="click to see details"
+              >
+                <div className="h-[250px] flex items-center">
+                  <img className="w-full " src={brand?.brand_photo} alt="" />
+                </div>
+                <h3>{brand?.brand_name}</h3>
               </div>
-              <h3>{brand?.brand_name}</h3>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
