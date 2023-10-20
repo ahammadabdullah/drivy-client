@@ -13,9 +13,7 @@ const CarDetails = () => {
   const { user } = useAuth();
   //car data by id
   useEffect(() => {
-    fetch(
-      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/car/${id}`
-    )
+    fetch(`https://drivy-server.vercel.app/car/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCar(data);
@@ -33,9 +31,7 @@ const CarDetails = () => {
   };
   const handleAddToCart = () => {
     //get filtered items with name
-    fetch(
-      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/cart/${car.Name}`
-    )
+    fetch(`https://drivy-server.vercel.app/cart/${car.Name}`)
       .then((res) => res.json())
       .then((data) => {
         setNewCartData(data);
@@ -44,16 +40,13 @@ const CarDetails = () => {
       toast.error("already added to cart");
       return;
     }
-    fetch(
-      "https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/cart",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(cartData),
-      }
-    )
+    fetch("https://drivy-server.vercel.app/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartData),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

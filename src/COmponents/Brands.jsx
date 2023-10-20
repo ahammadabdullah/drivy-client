@@ -7,9 +7,7 @@ const Brands = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      "https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/brands"
-    )
+    fetch("https://drivy-server.vercel.app/brands")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);

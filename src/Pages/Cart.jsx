@@ -11,9 +11,7 @@ const Cart = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(
-      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/carts/${user.email}`
-    )
+    fetch(`https://drivy-server.vercel.app/carts/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCart(data);
@@ -30,12 +28,9 @@ const Cart = () => {
     });
   }, [cart]);
   const handleDeleteOne = (_id) => {
-    fetch(
-      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/carts/${_id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`https://drivy-server.vercel.app/carts/${_id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
@@ -46,12 +41,9 @@ const Cart = () => {
       });
   };
   const handleClearCart = () => {
-    fetch(
-      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/cart/${user?.email}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`https://drivy-server.vercel.app/cart/${user?.email}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

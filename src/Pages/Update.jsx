@@ -9,9 +9,7 @@ const Update = () => {
   const [car, setCar] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(
-      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/car/${id}`
-    )
+    fetch(`https://drivy-server.vercel.app/car/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCar(data);
@@ -37,16 +35,13 @@ const Update = () => {
       rating,
       short_description,
     };
-    fetch(
-      `https://drivy-server-5l2dwm0tc-ahammad-abdullahs-projects.vercel.app/car/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newCar),
-      }
-    )
+    fetch(`https://drivy-server.vercel.app/car/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newCar),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
