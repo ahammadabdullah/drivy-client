@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { FaRegUser } from "react-icons/fa";
+
 const Navbar = () => {
   const { user, logout } = useAuth();
   const handleLogout = () => {
@@ -141,7 +143,7 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className=" gap-4 menu-horizontal px-1">{navLink}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end hidden lg:flex">
             {user?.photoURL && (
               <img
                 className="rounded-full w-[30px]"
@@ -167,6 +169,59 @@ const Navbar = () => {
               >
                 login
               </NavLink>
+            )}
+          </div>
+          <div className="navbar-end  lg:hidden">
+            {user ? (
+              <>
+                <div className="dropdown dropdown-end">
+                  <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                    {user?.photoURL ? (
+                      <img
+                        className="cursor-pointer h-10 w-10 mx-2 rounded-full"
+                        src={user?.photoURL}
+                        alt=""
+                      />
+                    ) : (
+                      <FaRegUser></FaRegUser>
+                    )}
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content mt-3  z-[1] p-2 shadow bg-primary rounded-none w-52"
+                  >
+                    {user && (
+                      <li className="pl-3 pb-2 ">{user?.displayName}</li>
+                    )}
+                    {user && (
+                      <>
+                        <li className="pl-3 pb-2 ">{user?.email}</li>
+                        <button
+                          onClick={handleLogout}
+                          className=" font-bold px-3 py-2 rounded-none border-b-white border-2"
+                        >
+                          SignOut
+                        </button>
+                      </>
+                    )}
+                  </ul>
+                </div>
+              </>
+            ) : (
+              <button>
+                <NavLink
+                  to="/login"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? " bg-primary py-2 border-b-2 border-white"
+                      : ""
+                  }
+                >
+                  login
+                </NavLink>
+              </button>
             )}
           </div>
         </div>
