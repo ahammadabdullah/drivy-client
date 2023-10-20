@@ -171,7 +171,7 @@ const Navbar = () => {
               </NavLink>
             )}
           </div>
-          <div className="navbar-end  lg:hidden">
+          <div className="navbar-end mr-2 lg:hidden">
             {user ? (
               <>
                 <div className="dropdown dropdown-end">

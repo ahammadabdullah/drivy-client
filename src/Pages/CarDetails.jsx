@@ -66,7 +66,7 @@ const CarDetails = () => {
               {car.brand_name} {car.Name}
             </title>
           </Helmet>
-          <img src={car?.ImageURL} alt="cars" className="rounded-md" />
+          <img src={car?.ImageURL} alt="cars" className="rounded-md w-full" />
           <div className="text-center">
             <h2 className="text-4xl lg:text-6xl  font-semibold  py-10">
               {car?.brand_name} {car?.Name}{" "}
