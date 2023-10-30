@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import auth from "../config/config.firebase";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -38,12 +39,23 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      const userEmail = currentUser.email || user.email;
+      const loggedUser = { email: userEmail };
+      const url = "https://drivy-server.vercel.app/jwt";
+      if (currentUser) {
+        axios
+          .post(url, loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data));
+      }
+
       console.log(currentUser);
     });
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [user?.email]);
 
   const Authentication = {
     createAccWithEmailPass,

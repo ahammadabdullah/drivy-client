@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import Loader from "../COmponents/Loader";
 import { toast } from "react-hot-toast";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -11,12 +12,11 @@ const Cart = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`https://drivy-server.vercel.app/carts/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCart(data);
-        setLoading(false);
-      });
+    const url = `https://drivy-server.vercel.app/carts/${user?.email}`;
+    axios.get(url, { withCredentials: true }).then((res) => {
+      setCart(res.data);
+      setLoading(false);
+    });
   }, [user?.email]);
   let tPrice = 0;
 
