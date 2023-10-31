@@ -37,10 +37,11 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
       setUser(currentUser);
       setLoading(false);
-      const userEmail = currentUser.email || user.email;
       const loggedUser = { email: userEmail };
+      console.log({ loggedUser, currentUser });
       const url = "https://drivy-server.vercel.app/jwt";
       if (currentUser) {
         axios
@@ -48,6 +49,12 @@ const AuthProvider = ({ children }) => {
             withCredentials: true,
           })
           .then((res) => console.log(res.data));
+      } else {
+        axios
+          .post("https://drivy-server.vercel.app/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => console.log("cookie cleared", res.data));
       }
 
       console.log(currentUser);
